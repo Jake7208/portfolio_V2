@@ -6,6 +6,7 @@
     --color-text: #222222;
     --btn-border: #DBDBDB;
     --color-primary: #769BE3;
+    --color-blueTint: #4A60B0;
 }
 
 .dark-mode
@@ -77,6 +78,24 @@ nav ul li a
     gap: 4rem;
     color: var(--color-text);
 }
+#newCursor {
+    position: fixed;
+    top: -100px; /* Move the element above the viewport */
+    left: -100px; /* Move the element to the left of the viewport */
+    z-index: 10;
+    pointer-events: none;
+}
+
+#newCursor::after {
+    position: absolute;
+    content: '';
+    border: 2px solid var(--color-text);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 11; /* Adjust this value to make the border above other elements */
+}
+
 
 .link
 {
@@ -113,7 +132,7 @@ nav ul li a
 .intro
 {
     position: fixed;
-    z-index: 1;
+    z-index: 20;
     top: 0;
     left: 0;
     width: 100%;
@@ -190,6 +209,47 @@ nav ul li a
     font-weight: 700;
     color: var(--color-text);
     width: 80%;
+}
+
+.hero-name
+{
+    position: relative;
+    z-index: 2;
+}
+
+.hero-name::after
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--color-text);
+    color: var(--color-bg);
+    z-index: -1;
+    transition: width 0.5s, transform 0.5s 0.5s;
+}
+.hero-title h1:hover .hero-name
+{
+    color: var(--color-bg);
+}
+.hero-title h1:not(:hover) .hero-name
+{
+    color: var(--color-text);
+    transition: all .5s 0.5s;
+}
+
+.hero-title h1:hover .hero-name::after
+{
+    transform: rotate(3deg) ;
+    width: 100%;
+}
+
+.hero-title h1:not(:hover) .hero-name::after
+{
+    transition: transform .5s, width .5s .5s;
+    width: 0%;
 }
 
 
