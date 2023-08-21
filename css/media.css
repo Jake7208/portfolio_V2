@@ -1,2 +1,27 @@
+@keyframes spring {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    20% {
+        transform: scale3d(1.4, .85, 1);
+        transition: transform .4s;
+    }
+    40% {
+        transform: scale3d(.7, 1.05, 1);
+        transition: transform .6s;
+    }
+    60% {
+        transform: scale3d(1.15, .85, 1);
+        transition: transform .7s;
+    }
+    80% {
+        transform: scale3d(.95, 1, 1);
+        transition: transform .8s;
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+        transition: transform .9s;
+    }
+}
 
     

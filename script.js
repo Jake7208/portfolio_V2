@@ -6,7 +6,7 @@ gsap.set('.cursor',
 })
 
 let cursor = document.querySelector('.cursor');
-let cursor2 = document.querySelector('.cursor2');
+
 
 let mouseX;
 let mouseY;
@@ -20,6 +20,7 @@ window.addEventListener('mousemove', e => {
     })
 
 })
+
 
 let intro = document.querySelector('.intro');
 let logo = document.querySelector('.logo-header');
@@ -50,7 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 2300);
 
         setTimeout(() => {
-            intro.style.top = '-120%';
+            intro.style.top = '100%';
             intro.style.borderRadius = '60%';
             
             // Reset overflow to its original value
@@ -58,3 +59,4 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 2500);
     });
 });
+

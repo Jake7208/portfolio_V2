@@ -2,12 +2,13 @@
 
 :root
 {
+    --hero-bg: #E9E9E9;
     --color-bg: #F3F3EE;
     --color-text: #222222;
     --btn-border: #DBDBDB;
     --color-primary: #769BE3;
     --color-blueTint: #4A60B0;
-    --color-invisible: #55555574;
+    --color-invisible: #222222;
 }
 
 .dark-mode
@@ -35,7 +36,7 @@
 
 body
 {
-    background: var(--color-bg); 
+    background: var(--hero-bg); 
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
 }
@@ -88,7 +89,7 @@ nav ul li a
 
 .cursor 
 {
-    background: var(--color-text);
+    background: var(--color-invisible);
     top: 0;
     width: 20px;
     height: 20px;
@@ -138,7 +139,7 @@ nav ul li a
     left: 0;
     width: 100%;
     height: 100%;
-    background: #222222;
+    background: var(--color-invisible);
     transition: 1s ;
 }
 
@@ -157,28 +158,35 @@ nav ul li a
 {
     position: relative;
     display: inline-block;
-    bottom: -20px;
+    bottom: -200px;
     opacity: 0;
 }
+
 
 .logo.active
 {
     bottom: 0;
     opacity: 1;
+
     transition: ease-in-out 0.5s;
 }
 
 .logo.fade 
 {
-    bottom: 150px;
+    top: 0;
     opacity: 0;
-    transition: ease-out 0.5s;
+    transition: ease-out all 0.5s;
 }
 
 /* 
 * Hero Section
 */
-
+.start {
+    width: 100%;
+    height: 100vh;
+    background: var(--hero-bg);
+    z-index: -1;
+}
 .hero 
 {
     position: relative;
@@ -206,48 +214,16 @@ nav ul li a
 {
     position: relative;
     font-size: clamp(4rem, 10vw, 6rem);
+    font-weight: 600;
     margin-top: 5%;
-    font-weight: 700;
     color: var(--color-text);
-    width: 80%;
+    width: 60%;
+    z-index: 2;
+    white-space: normal; 
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-
-
-/* .hero-name::after
-{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background: var(--color-text);
-    color: var(--color-bg);
-    z-index: -1;
-    transition: width 0.5s, transform 0.5s 0.5s;
-}
-.hero-title h1:hover .hero-name
-{
-    color: var(--color-bg);
-}
-.hero-title h1:not(:hover) .hero-name
-{
-    color: var(--color-text);
-    transition: all .5s 0.5s;
-}
-
-.hero-title h1:hover .hero-name::after
-{
-    transform: rotate(3deg) ;
-    width: 100%;
-}
-
-.hero-title h1:not(:hover) .hero-name::after
-{
-    transition: transform .5s, width .5s .5s;
-    width: 0%;
-} */
 
 
 .hero-title p
@@ -256,19 +232,29 @@ nav ul li a
     margin-top: 1rem;
     color: var(--color-text);
     font-size: clamp(1rem, 3vw, 1.2rem);
-    width: 60%;
+    width: 50%;
     font-size-adjust: initial;
 
+}
+.hero-name
+{
+    -webkit-text-stroke: 1.5px var(--color-text);
+    text-stroke: 1.5px var(--color-text);
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    color: transparent;
+    transition: all .5s ease;
+    -webkit-font-smoothing: antialiased;
 }
 
 .sideline 
 {
-    
     padding-left: 1rem;
     padding-right: 5rem;
     position: relative;
-    top: 200px;
+    top: 180px;
     left: 0;
+
     font-size: clamp(.8rem, 3vw, 1.2rem);
     color: var(--color-text);
     writing-mode: vertical-lr;
@@ -280,9 +266,10 @@ nav ul li a
     margin-top: 3rem;
     display: flex;
     gap: 2rem;
+    z-index: 3;
 }
 
-.hero-btns a 
+.hero-btns a
 {
     position: relative;
     font-size: clamp(1rem, 3vw, 1.2rem);
@@ -292,6 +279,7 @@ nav ul li a
     padding: .5rem 3rem;
     border-radius: 50px;
     text-decoration: none;
+    z-index: 1;
 }
 
 .hero-btns a::before
@@ -309,7 +297,7 @@ nav ul li a
 
 .hero-btns a:hover::before
 {
-    transition: width .5s, opacity .5s;
+    transition: all .5s;
     width: 100%;
     background: var(--color-text);
     opacity: 1;
@@ -324,5 +312,70 @@ nav ul li a
 .hero-btns a:hover
 {
     color: #F3F3EE;
-   
+    z-index: 2;
+}
+
+.marquee
+{
+    rotate: -2deg;
+    display: flex;
+    height: auto;
+    user-select: none;
+    gap: 2rem;
+    padding-top: 1rem;
+}
+
+.marquee:hover
+{
+    -webkit-text-stroke: 1.5px var(--color-text);
+    text-stroke: 1.5px var(--color-text);
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    color: transparent;
+    transition: all .5s;
+    -webkit-font-smoothing: antialiased;
+}
+
+.marquee:not(:hover)
+{
+    color: var(--color-text);
+    transition:  .5s ;
+}
+
+.marquee-group
+{
+  flex-shrink: 0;
+  display: block;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  min-width: 100%;
+  animation: Scrolling 50s linear infinite;
+}
+
+.marquee-group:hover 
+{
+    animation-play-state: paused;
+}
+
+.marquee-group span
+{
+    font-size: clamp(10rem, 20vw, 12rem);
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+
+
+
+@keyframes Scrolling {
+    0%
+    {
+        transform: translateX(0);
+    }
+    100%
+    {
+        transform: translateX(calc(-100%));
+    }
 }
