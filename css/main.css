@@ -7,6 +7,7 @@
     --btn-border: #DBDBDB;
     --color-primary: #769BE3;
     --color-blueTint: #4A60B0;
+    --color-invisible: #55555574;
 }
 
 .dark-mode
@@ -78,23 +79,23 @@ nav ul li a
     gap: 4rem;
     color: var(--color-text);
 }
-#newCursor {
+.cursor {
     position: fixed;
-    top: -100px; /* Move the element above the viewport */
-    left: -100px; /* Move the element to the left of the viewport */
-    z-index: 10;
+    left: 0;
+    border-radius: 50%;
     pointer-events: none;
 }
 
-#newCursor::after {
-    position: absolute;
-    content: '';
-    border: 2px solid var(--color-text);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    z-index: 11; /* Adjust this value to make the border above other elements */
+.cursor 
+{
+    background: var(--color-text);
+    top: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 999;
 }
+
+
 
 
 .link
@@ -211,13 +212,9 @@ nav ul li a
     width: 80%;
 }
 
-.hero-name
-{
-    position: relative;
-    z-index: 2;
-}
 
-.hero-name::after
+
+/* .hero-name::after
 {
     content: '';
     position: absolute;
@@ -250,7 +247,7 @@ nav ul li a
 {
     transition: transform .5s, width .5s .5s;
     width: 0%;
-}
+} */
 
 
 .hero-title p
@@ -312,14 +309,20 @@ nav ul li a
 
 .hero-btns a:hover::before
 {
-    transition: all .5s;
+    transition: width .5s, opacity .5s;
     width: 100%;
     background: var(--color-text);
     opacity: 1;
 }
 
+.hero-btns a:not(:hover)::before
+{
+    width: 0;
+    transition: width .5s;
+}
+
 .hero-btns a:hover
 {
     color: #F3F3EE;
-    transition: all .5s;
+   
 }
