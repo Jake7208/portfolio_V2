@@ -24,7 +24,18 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    
 }
+
+::-moz-selection { /* Code for Firefox */
+    color: var(--color-bg);
+    background: var(--color-text);
+  }
+  
+  ::selection {
+    color: var(--color-bg);
+    background: var(--color-text);
+  }
 
 * , ::before, ::after
 {
@@ -69,6 +80,7 @@ header, nav, section
     left: 0;
     border-radius: 50%;
     pointer-events: none;
+    mix-blend-mode: difference;
 }
 
 .cursor 
@@ -76,7 +88,7 @@ header, nav, section
     top: 0;
     width: 10px;
     height: 10px;
-    background: var(--color-text);
+    background: var(--color-bg);
     z-index: 999;
 }
 
@@ -160,6 +172,7 @@ TODO nav
     writing-mode: vertical-lr;
     height: auto;
     margin-left: -5%;
+    pointer-events: none;
 }
 
 .hero-text h1
@@ -169,6 +182,8 @@ TODO nav
     font-weight: 500;
     color: var(--color-text);
     line-height: 120%;
+    pointer-events: none;
+    
 }
 
 .hero-text p
