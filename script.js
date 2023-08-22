@@ -1,28 +1,52 @@
 gsap.registerPlugin(Flip, ScrollTrigger);
 
+const trailer = document.getElementById("trailer");
 
-let mouseCursor = document.querySelector('.cursor');
-let hovering = document.querySelectorAll('.hero-btns, nav ul li a');
+const animateTrailer = (e, interacting) => {
+  const x = e.clientX - trailer.offsetWidth / 2,
+        y = e.clientY - trailer.offsetHeight / 2;
+  
+  const keyframes = {
+    transform: `translate(${x}px, ${y}px) scale(${interacting ? 5 : 1})`
+  }
+  
+  trailer.animate(keyframes, { 
+    duration: 800, 
+    fill: "forwards" 
+  });
+}
 
-window.addEventListener('mousemove', e => {
-    const cursor = () => {
-        mouseCursor.style.top = e.clientY + 'px';
-        mouseCursor.style.left = e.clientX + 'px';
-    }
-    cursor();
+const getTrailerClass = type => {
+  switch(type) {
+    case "video":
+      return "fa-solid fa-play"
+    default:
+      return "fa-solid fa-arrow-right"; 
+  }
+}
+
+window.onmousemove = e => {
+  const interactable = e.target.closest(".interactable"),
+        interacting = interactable !== null;
+  
+  const icon = document.getElementById("trailer-icon");
+  
+  animateTrailer(e, interacting);
+  
+  trailer.dataset.type = interacting ? interactable.dataset.type : "";
+  
+  if(interacting) {
+    icon.className = getTrailerClass(interactable.dataset.type);
+  }
+}
 
 
-    hovering.forEach(link => {
-        link.addEventListener('mouseover', () => {
-            mouseCursor.classList.add('link-grow');
-            mouseCursor.classList.add('hovered-link');
-        })
-        link.addEventListener('mouseleave', () => {
-            mouseCursor.classList.remove('link-grow');
-            mouseCursor.classList.remove('hovered-link');
-        })
-    })
-});
+const navToggle = document.getElementById('nav2');;
+
+const toggleNav = () => {
+    document.body.dataset.navToggle = document.body.dataset.navToggle === 'true' ? 'false' : 'true';
+    console.log( document.body.dataset.navToggle);
+}
 
 
 let intro = document.querySelector('.intro');
