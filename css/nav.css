@@ -1,0 +1,65 @@
+/* 
+TODO nav
+*/
+    
+#hero 
+{   
+    --header-height: 71px;
+    position: relative;
+    max-width: var(--innerWidth);
+}
+
+.nav-section
+{
+    --innerWidth: 1920px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--innerWidth);
+    width: 90%;
+    margin: 0 auto;
+    height: var(--header-height);
+    text-transform: uppercase;
+}
+
+nav ul,
+nav ul li,
+nav ul li a
+{
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+    font-size: var(--text-header);
+    color: var(--color-text);
+    gap: 60px;
+}
+
+.hero-name
+{
+    color: var(--color-text);
+    font-size: var(--text-header);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.hero-name:hover
+{
+    color: var(--color-primary);
+    transition: 0.3s;
+}
+
+.hero-name:not(:hover)
+{
+    color: var(--color-text);
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 1330px)
+{
+    .nav-section
+    {
+        display: none;
+    }
+}
+    

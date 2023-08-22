@@ -2,13 +2,15 @@
 
 :root
 {
-    --hero-bg: #E9E9E9;
-    --color-bg: #F3F3EE;
+    --hero-bg: #F3F3EE;
+    --color-bg: #F8F8F8;
     --color-text: #222222;
     --btn-border: #DBDBDB;
     --color-primary: #769BE3;
-    --color-blueTint: #4A60B0;
+    --color-Tint: #636363;
     --color-invisible: #222222;
+    --text-header: clamp(1rem, 3vw, 1.2rem);
+    --font-family1: 'Poppins', sans-serif;
 }
 
 .dark-mode
@@ -17,69 +19,51 @@
     --color-text: #F3F3EE;
     --btn-border: #dbdbdb;
 }
-* 
+*
 {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    line-height: 150%;
+    scroll-behavior: smooth;
+}
+
+* , ::before, ::after
+{
+    box-sizing: inherit;
 }
 
 .inner 
 {
+    --pad-inner: 80px;
     --innerWidth: 1920px;
-    width: 90%;
     max-width: var(--innerWidth);
     margin: 0 auto;
+    padding: 0 var(--pad-inner);
+
 }
+.block
+{
+    margin-top: clamp(20px,3vw,50px);
+    margin-bottom: clamp(50px,20vw,200px);
+}
+
 
 body
 {
-    background: var(--hero-bg); 
+    margin: auto;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 200%;
     text-rendering: optimizeLegibility;
+    font-family: var(--font-family1);
     overflow-x: hidden;
 }
 
-header 
+header, nav, section 
 {
-    --inner-padding : 7.5rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 75px;
-    padding: 0 var(--inner-padding);
+    display: block;
 }
 
-header h4
-{
-    position: relative;
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    font-weight: 400;
-    color: var(--color-text);
-}
 
-header nav
-{
-    position: relative;
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    font-weight: 400;
-}
-
-nav ul,
-nav ul li,
-nav ul li a
-{
-    display: flex;
-    list-style: none;
-    text-decoration: none;
-    gap: 4rem;
-    color: var(--color-text);
-}
 .cursor {
     position: fixed;
     left: 0;
@@ -89,42 +73,11 @@ nav ul li a
 
 .cursor 
 {
-    background: var(--color-invisible);
     top: 0;
-    width: 20px;
-    height: 20px;
-    z-index: 999;
-}
-
-
-
-
-.link
-{
-    position: relative;
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    font-weight: 400;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: 0.3s;
-} 
-
-.link::after
-{
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: -10%;
-    background: var(--btn-border);
-    transition: width .3s;
-}
-
-.link:hover::after
-{
-    width: 120%;
+    width: 10px;
+    height: 10px;
     background: var(--color-text);
+    z-index: 999;
 }
 
 /*
@@ -179,85 +132,96 @@ nav ul li a
 }
 
 /* 
-* Hero Section
+TODO nav
 */
-.start {
-    width: 100%;
-    height: 100vh;
-    background: var(--hero-bg);
-    z-index: -1;
-}
-.hero 
+.header-wrapper
 {
     position: relative;
-    width: 100%;
-    height: 90vh;
     display: flex;
+    flex-direction: column;
+    background: var(--hero-bg);
 }
 
-.indicator svg
+#hero-content
 {
+    position: relative;
+    height: 100%;
+    width: 91%;
+    margin: 0 auto;
+    padding-bottom: clamp(30px,6vw,100px);
+    padding-top: 71px;
+}
+
+.side-text
+{
+    max-width: var(--innerWidth);
     position: absolute;
-    top: 2%;
-    right: 2%;
-    fill: var(--color-text);
-}
-
-.indicator svg:hover 
-{
-    transition: .1s all;
-    fill: var(--color-primary);
-}
-
-
-.hero-title h1
-{
-    position: relative;
-    font-size: clamp(4rem, 10vw, 6rem);
-    font-weight: 600;
-    margin-top: 5%;
-    color: var(--color-text);
-    width: 80%;
-    z-index: 2;
-    white-space: normal; 
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-
-
-.hero-title p
-{
-    font-weight: 400;
-    margin-top: 1rem;
-    color: var(--color-text);
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    width: 50%;
-    font-size-adjust: initial;
-
-}
-.hero-name
-{
-    -webkit-text-stroke: 1.5px var(--color-text);
-    text-stroke: 1.5px var(--color-text);
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    color: transparent;
-    transition: all .5s ease;
-    -webkit-font-smoothing: antialiased;
-}
-
-.sideline 
-{
-    padding-left: 1rem;
-    padding-right: 5rem;
-    position: relative;
-    top: 180px;
-    left: 0;
-
-    font-size: clamp(.8rem, 3vw, 1.2rem);
-    color: var(--color-text);
+    top: 30%;
     writing-mode: vertical-lr;
+    height: auto;
+    margin-left: -5%;
+}
+
+.hero-text h1
+{
+    position: relative;
+    font-size: clamp(5rem, 6vw, 10rem);
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 120%;
+}
+
+.hero-text p
+{
+    margin-top: 2rem;
+    position: relative;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    width: fit-content;
+    line-height: 200%;
+    color: var(--color-Tint);
+    border-bottom: 2px solid var(--btn-border);
+}
+
+.hero-text p::after
+{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid var(--color-text);
+}
+
+.hero-text p:hover::after
+{
+    transition: all .5s;
+    width: 100%;
+}
+
+.hero-text p:not(:hover)::after
+{
+    transition: all .5s;
+    width: 0%;
+}
+
+.hero-text p::before
+{
+    content: 'Crafting Experiences Through Code and Creativity: Empowering the Digital World as a Creative Developer and Designer.';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    color:  var(--color-text);
+    border-radius: 50px;
+    opacity: 0;
+    z-index: 2;
+}
+
+.hero-text p:hover::before
+{
+    transition: all .5s;
+    opacity: 1;
 }
 
 .hero-btns
@@ -306,7 +270,7 @@ nav ul li a
 .hero-btns a:not(:hover)::before
 {
     width: 0;
-    transition: width .5s;
+    transition: all .5s;
 }
 
 .hero-btns a:hover

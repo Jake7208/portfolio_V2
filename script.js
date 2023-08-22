@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 2300);
 
         setTimeout(() => {
-            intro.style.top = '100%';
+            intro.style.top = '-100%';
             intro.style.borderRadius = '60%';
             
             // Reset overflow to its original value
@@ -60,3 +60,13 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+const height = window.innerHeight;
+let headerWrapper = document.querySelector('.header-wrapper');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= height) {
+        headerWrapper.classList.add('active');
+    } else {
+        headerWrapper.classList.remove('active');
+    }
+})
