@@ -44,13 +44,13 @@
 
 .inner 
 {
-    --pad-inner: 80px;
+    --pad-inner: clamp(20px, 3vw, 50px);
     --innerWidth: 1920px;
     max-width: var(--innerWidth);
     margin: 0 auto;
     padding: 0 var(--pad-inner);
-
 }
+
 .block
 {
     margin-top: clamp(20px,3vw,50px);
@@ -67,6 +67,7 @@ body
     text-rendering: optimizeLegibility;
     font-family: var(--font-family1);
     overflow-x: hidden;
+    cursor: none;
 }
 
 header, nav, section 
@@ -76,20 +77,34 @@ header, nav, section
 
 
 .cursor {
-    position: fixed;
+    position: fixed;   
+    top: 0;
     left: 0;
     border-radius: 50%;
     pointer-events: none;
-    mix-blend-mode: difference;
-}
-
-.cursor 
-{
-    top: 0;
     width: 10px;
     height: 10px;
-    background: var(--color-bg);
+    background: var(--color-text);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease; 
+    transition-property: background, transform;
+    transform-origin: 70% 70%; 
     z-index: 999;
+}
+
+.link-grow{
+    mix-blend-mode: difference;
+    transform: scale(4) ;
+
+    background: var(--color-bg);
+    border: none;
+   
+}
+
+.hovered-link
+{
+    color: var(--color-bg);
+
 }
 
 /*
@@ -99,7 +114,7 @@ header, nav, section
 .intro
 {
     position: fixed;
-    z-index: 20;
+    z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
@@ -148,10 +163,10 @@ TODO nav
 */
 .header-wrapper
 {
-    position: relative;
+    background: var(--hero-bg);
     display: flex;
     flex-direction: column;
-    background: var(--hero-bg);
+    min-height: auto;
 }
 
 #hero-content
@@ -173,13 +188,28 @@ TODO nav
     height: auto;
     margin-left: -5%;
     pointer-events: none;
+    font-size: clamp(.8rem, 3vw, 1.2rem);
+}
+
+
+
+.indicator svg
+{
+    max-width: var(--innerWidth);
+    position: absolute;
+    top: 5%;
+    writing-mode: vertical-lr;
+    height: auto;
+    margin-left: 90%;
+    fill: var(--color-text);
 }
 
 .hero-text h1
 {
     position: relative;
-    font-size: clamp(5rem, 6vw, 10rem);
+    font-size: clamp(2rem, 5vw, 10rem);
     font-weight: 500;
+    width: 80%;
     color: var(--color-text);
     line-height: 120%;
     pointer-events: none;
@@ -190,9 +220,10 @@ TODO nav
 {
     margin-top: 2rem;
     position: relative;
-    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-size: clamp(.8rem, 3vw, 1.2rem);
     width: fit-content;
     line-height: 200%;
+    font-weight: 500;
     color: var(--color-Tint);
     border-bottom: 2px solid var(--btn-border);
 }
@@ -246,6 +277,7 @@ TODO nav
     display: flex;
     gap: 2rem;
     z-index: 3;
+    width: fit-content;
 }
 
 .hero-btns a
@@ -255,7 +287,10 @@ TODO nav
     font-weight: 500;   
     color: var(--color-text);
     border: 1px solid var(--btn-border);
-    padding: .5rem 3rem;
+    padding-top: clamp(.25rem, 3vw, .5rem);
+    padding-bottom: clamp(.25rem, 3vw, .5rem);
+    padding-left: clamp(2.5rem, 3vw, 3rem);
+    padding-right: clamp(2.5rem, 3vw, 3rem);
     border-radius: 50px;
     text-decoration: none;
     z-index: 1;
@@ -294,3 +329,23 @@ TODO nav
     z-index: 2;
 }
 
+/* 
+* About Section
+*/
+
+.main-wrapper
+{
+    display: flex;
+flex-direction: column;
+min-height: 100vh;
+background: var(--color-bg);
+}
+#about 
+{
+    position: relative;
+    width: 91%;
+    height: 100%;
+    margin: 0 auto;
+    padding-bottom: clamp(30px,6vw,100px);
+    padding-top: 71px;
+}

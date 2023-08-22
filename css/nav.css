@@ -27,20 +27,24 @@ nav ul,
 nav ul li,
 nav ul li a
 {
+    position: relative;
     display: flex;
     list-style: none;
     text-decoration: none;
     font-size: var(--text-header);
     color: var(--color-text);
-    gap: 60px;
+    padding: 1rem;
+    gap: 20px;
+    z-index: 31;
 }
 
 .hero-name
 {
+    padding: 20px;
     color: var(--color-text);
     font-size: var(--text-header);
     font-weight: 600;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .hero-name:hover
@@ -61,5 +65,41 @@ nav ul li a
     {
         display: none;
     }
+
+}
+
+@media screen and (max-width: 800px)
+{
+    body
+    {
+        cursor: default;
+    }
+    .nav-section
+    {
+        display: none;
+    }
+
+    .side-text
+    {
+        padding: none;
+        margin: none;
+        left: 0;
+    }
+
+    .cursor
+    {
+        display: none;
+    }
+    
+    .indicator svg
+    {
+        width: 15px;
+        height: 15px;
+        top: 10%;
+    }
+    .hero-text p
+    {
+        color: var(--color-text);
+    };
 }
     

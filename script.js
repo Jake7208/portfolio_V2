@@ -1,25 +1,28 @@
 gsap.registerPlugin(Flip, ScrollTrigger);
 
-gsap.set('.cursor', 
-{
-    xPercent: -50, yPercent: -50    
-})
 
-let cursor = document.querySelector('.cursor');
-
-
-let mouseX;
-let mouseY;
+let mouseCursor = document.querySelector('.cursor');
+let hovering = document.querySelectorAll('.hero-btns, nav ul li a');
 
 window.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    const cursor = () => {
+        mouseCursor.style.top = e.clientY + 'px';
+        mouseCursor.style.left = e.clientX + 'px';
+    }
+    cursor();
 
-    gsap.to ('.cursor', .5, {
-        x: mouseX, y: mouseY
+
+    hovering.forEach(link => {
+        link.addEventListener('mouseover', () => {
+            mouseCursor.classList.add('link-grow');
+            mouseCursor.classList.add('hovered-link');
+        })
+        link.addEventListener('mouseleave', () => {
+            mouseCursor.classList.remove('link-grow');
+            mouseCursor.classList.remove('hovered-link');
+        })
     })
-
-})
+});
 
 
 let intro = document.querySelector('.intro');
@@ -51,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 2300);
 
         setTimeout(() => {
-            intro.style.top = '-100%';
+            intro.style.top = '100%';
             intro.style.borderRadius = '60%';
             
             // Reset overflow to its original value
@@ -59,14 +62,3 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 2500);
     });
 });
-
-const height = window.innerHeight;
-let headerWrapper = document.querySelector('.header-wrapper');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY >= height) {
-        headerWrapper.classList.add('active');
-    } else {
-        headerWrapper.classList.remove('active');
-    }
-})
