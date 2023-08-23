@@ -41,16 +41,10 @@
     box-sizing: inherit;
 }
 
-.inner 
-{
-    --innerWidth: 1920px;
-    max-width: var(--innerWidth);
-}
-
 .block
 {
-    margin-top: clamp(20px,3vw,50px);
-    margin-bottom: clamp(50px,20vw,200px);
+    margin-top: clamp(20px,10vw,3rem);
+    margin-bottom: clamp(20px,10vw,50px);
 }
 
 
@@ -61,6 +55,8 @@ body
     text-rendering: optimizeLegibility;
     font-family: var(--font-family1);
     overflow-x: hidden;
+    width: 100%;
+    margin: 0 auto;
 }
 
 header, nav, section 
@@ -84,7 +80,6 @@ strong
     top: 0px;
     left: 0px;
     z-index: 1000;
-
     pointer-events: none;
     opacity: 0;
     transition: opacity 500ms ease ;
@@ -126,14 +121,22 @@ TODO nav
     background: var(--color-bg);
     display: flex;
     justify-content: center;
-    height: 100vh;
+    max-height: 100vh;
+    height: 1080px;
+}
+#hero-content
+{
+    position: relative;
+    display: grid;
+
+    height: 100%;
 }
 
 .hero-text h1
 {
     position: relative;
     display: flex;
-    font-size: clamp(2rem, 13vw, 20rem);
+    font-size: clamp(2rem, 13vw, 14rem);
     justify-content: center;
     font-weight: 500;
     color: var(--color-text);
@@ -145,7 +148,9 @@ TODO nav
 .hero-middle-container
 {
     width: 100%;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -177,15 +182,34 @@ TODO nav
 {
     display: flex;
 flex-direction: column;
-min-height: 100vh;
-background: var(--color-bg);
+background: #ffffff;
+max-height: 100vh;
+height: 100vh;
+max-width: 1920px;
+width: 80%;
+margin: 0 auto;
 }
+
 #about 
 {
     position: relative;
-    width: 91%;
     height: 100%;
-    margin: 0 auto;
     padding-bottom: clamp(30px,6vw,100px);
-    padding-top: 71px;
+}
+
+.about h2
+{
+    position: relative;
+    display: flex;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 500;
+    color: var(--color-text);
+    pointer-events: none;
+    line-height: normal;
+    align-items: center;
+}
+
+.about svg
+{
+    margin-bottom: 10px;
 }

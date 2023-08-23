@@ -1,0 +1,78 @@
+.hero-marquee {
+    display: flex;
+    overflow-x: hidden;
+
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden; 
+    gap: 15px;
+    padding: 2rem 0;
+    border-top: 2px solid var(--color-text);
+    border-bottom: 2px solid var(--color-text);
+}
+
+
+.hero-marquee div {
+    font-style: italic;
+    display: flex;
+    position: relative;
+    font-size: clamp(1.5rem, 4vw, 96px);
+    line-height: 200%;
+    color: var(--btn-border);
+    animation: marquee 6000ms linear infinite; /* Adjust the animation duration */
+}
+
+.hero-marquee:hover div {
+    animation-play-state: paused;
+}
+
+
+.hero-marquee a
+{
+    display: flex;
+    text-decoration: none;
+}
+.marquee-link::before
+{
+    content: "\00a0";
+}
+
+.marquee-link{
+    display: flex;
+    text-decoration: none;
+    color: var(--color-text);
+}
+.marquee-link-Resume
+{
+    display: flex;
+    text-decoration: none;
+    color: var(--color-bg);
+    padding: 0 2rem;
+    background: var(--color-text);
+
+}
+
+.marquee-link-Resume:hover,
+.marquee-link:hover
+{
+    color: var(--color-bg);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--color-text);
+    background: var(--color-bg);
+    stroke: 1px solid var(--color-text);
+    transition: all 0.5s;
+}
+
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% - 15px)); /* Adjust the percentage based on the number of content duplicates */
+    }
+}

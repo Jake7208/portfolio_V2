@@ -8,46 +8,33 @@ main
     margin: 0px;
     position: relative;
     z-index: 3;
+    scroll-behavior: smooth;
 }
 
 #nav2
 {
-    height: 50vh;
+    height: 0vh;
     width: 100%;
     position: fixed;
     left: 0;
-    bottom: 0px;
+    bottom: 0;
     z-index: 2;
-    background: var(--color-invisible);
+    background: var(--color-text);
+    transition: all .5s;
 }
 
 body[data-nav-toggle='true'] > #nav2
 {
+    height: 100vh;
+    transition: height .5s;
     z-index: 4;
-}
-
-#nav-links {
-    display: flex;
-    justify-content: center;
-    gap: clamp(1rem, 3vw, 2rem);
-    margin-top: clamp(2rem, 2vw, 3rem);
-    padding: 0rem clamp(1rem, 2vw, 2rem);
-    transform: translateY(70%) scale(0.9);
-    transition: transform 500ms cubic-bezier(.13, .53, .38, .97);
-}
-    
-#hero 
-{   
-    --header-height: 71px;
-    position: relative;
-    max-width: var(--innerWidth);
 }
 
 #nav-toggle
 {
     height: 5rem;
     width: 5rem;
-    position: fixed;
+    position: absolute;
     z-index: 5;
     left: 50%;
     top: 50%;
@@ -58,7 +45,7 @@ body[data-nav-toggle='true'] > #nav2
     outline: none;
     box-shadow: 0 0 2rem rgba(0, 0, 0 / 35%);
     cursor: pointer;
-    transition: transform background-color;
+    transition: transform background-color height;
     transition-timing-function: ease;
     transition-duration: 400ms;
 }
@@ -111,7 +98,7 @@ body[data-nav-toggle="true"] #nav-toggle span {
 }
 
 body[data-nav-toggle="true"] main {
-    transform: translateY(-50%);
+    transform: translateY(-100vh);
 }
 
 body[data-nav-toggle="true"]> #nav2 > #nav-links {
@@ -141,57 +128,6 @@ main
     border-radius: .5rem;
     margin-top: .75rem;
     object-fit: cover;
-}
-
-
-.nav-section
-{
-    --innerWidth: 1920px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: var(--innerWidth);
-    width: 90%;
-    margin: 0 auto;
-    height: var(--header-height);
-    text-transform: uppercase;
-}
-
-nav ul,
-nav ul li,
-nav ul li a
-{
-    position: relative;
-    display: flex;
-    list-style: none;
-    text-decoration: none;
-    font-size: var(--text-header);
-    color: var(--color-text);
-    padding: 1rem;
-    gap: 20px;
-    z-index: 31;
-}
-
-.hero-name
-{
-    padding: 20px;
-    color: var(--color-text);
-    font-size: var(--text-header);
-    font-weight: 600;
-    /* cursor: pointer; */
-}
-
-.hero-name:hover
-{
-    color: var(--color-primary);
-    transition: 0.3s;
-}
-
-.hero-name:not(:hover)
-{
-    color: var(--color-text);
-    transition: 0.3s;
 }
 
 @media screen and (max-width: 1330px)
