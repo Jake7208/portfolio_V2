@@ -18,7 +18,7 @@ main
     left: 0;
     bottom: 0px;
     z-index: 2;
-    background: black;
+    background: var(--color-invisible);
 }
 
 body[data-nav-toggle='true'] > #nav2
@@ -50,9 +50,9 @@ body[data-nav-toggle='true'] > #nav2
     position: fixed;
     z-index: 5;
     left: 50%;
-    bottom: 3rem;
-    transform: translateX(-50%);
-    background-color: #000;
+    top: 50%;
+    transform: translate(-50%, -50%);;
+    background-color: var(--color-invisible);
     border: none;
     border-radius: 50%;
     outline: none;
@@ -65,12 +65,12 @@ body[data-nav-toggle='true'] > #nav2
 
 #nav-toggle:hover
 {
-    transform: translateX(-50%) scale(1.04);
+    transform: translate(-50%, -50%) scale(1.04);
 }
 
 #nav-toggle:active
 {
-    transform: translateX(-50%) scale(0.96);
+    transform: translate(-50%, -50%) scale(0.96);
 }
 
 #nav-toggle span
@@ -214,24 +214,6 @@ nav ul li a
         display: none;
     }
 
-    .side-text
-    {
-        padding: none;
-        margin: none;
-        left: 0;
-    }
-
-    .cursor
-    {
-        display: none;
-    }
-    
-    .indicator svg
-    {
-        width: 15px;
-        height: 15px;
-        top: 10%;
-    }
     .hero-text p
     {
         color: var(--color-text);
