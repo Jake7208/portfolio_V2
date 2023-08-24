@@ -2,14 +2,15 @@
 
 :root
 {
-    --color-bg: #F8F8F8;
+    --color-bg: #E9E9E9;
     --color-text: #222222;
-    --btn-border: #D9D9D9;
+    --btn-border: #cccccc;
     --color-primary: #769BE3;
     --color-Tint: #636363;
-    --color-invisible: #222222be;
+    --color-invisible: #769ae39c;
     --text-header: clamp(1rem, 3vw, 1.2rem);
-    --font-family1: 'Rosarivo', serif;
+    --font-family1: 'Poppins', sans-serif;
+    --font-family2: 'Rosarivo', serif;
 }
 
 .dark-mode
@@ -28,12 +29,12 @@
 
 ::-moz-selection { /* Code for Firefox */
     color: var(--color-bg);
-    background: var(--color-text);
+    background: var(--color-invisible);
   }
   
   ::selection {
     color: var(--color-bg);
-    background: var(--color-text);
+    background: var(--color-invisible);
   }
 
 * , ::before, ::after
@@ -74,7 +75,7 @@ strong
 {
     height: 20px;
     width: 20px;
-    background-color: var(--color-primary);
+    background: var(--color-text);
     border-radius: 20px;
     position: fixed;
     top: 0px;
@@ -83,6 +84,13 @@ strong
     pointer-events: none;
     opacity: 0;
     transition: opacity 500ms ease ;
+}
+
+#trailer[data-type="link"],
+#trailer[data-type="view"],
+#trailer[data-type="video"]
+{
+    background: var(--color-invisible);
 }
 
 body:hover > #trailer
@@ -99,18 +107,26 @@ body:hover > #trailer
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+    transform: translate(-60%, -60%) scale(1);
     font-size: 6px;
     line-height: 4px;
     opacity: 0;
-    transition: opacity 400ms ease, transform .5s ease;;
+    transition: opacity 400ms ease;
+    color: #D9D9D9;
 }
 
 #trailer[data-type="link"] > #trailer-icon
 {
     opacity: 1;
-    transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-60%, -60%) rotate(-45deg);
 }
+
+#trailer[data-type="video"] > #trailer-icon,
+#trailer[data-type="view"] > #trailer-icon
+{
+    opacity: 1;
+}
+
 
 
 /* 
@@ -126,9 +142,8 @@ TODO nav
 }
 #hero-content
 {
+    max-width: 1920px;
     position: relative;
-    display: grid;
-
     height: 100%;
 }
 
@@ -136,7 +151,7 @@ TODO nav
 {
     position: relative;
     display: flex;
-    font-size: clamp(2rem, 13vw, 14rem);
+    font-size: clamp(6rem, 13vw, 14rem);
     justify-content: center;
     font-weight: 500;
     color: var(--color-text);
@@ -145,71 +160,25 @@ TODO nav
     line-height: normal;
 }
 
-.hero-middle-container
-{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.hero-middle
-{
-
-    position: relative;
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    line-height: 200%;
-    color: var(--btn-border);
-}
-.hero-middle2
-{
-    position: relative;
-    transform: rotate(180deg);
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    line-height: 200%;
-    color: var(--btn-border);
-}
-
-
-/* 
-* About Section
-*/
-
-.main-wrapper
-{
-    display: flex;
-flex-direction: column;
-background: #ffffff;
-max-height: 100vh;
-height: 100vh;
-max-width: 1920px;
-width: 80%;
-margin: 0 auto;
-}
-
-#about 
-{
-    position: relative;
-    height: 100%;
-    padding-bottom: clamp(30px,6vw,100px);
-}
-
-.about h2
+.hero-text p 
 {
     position: relative;
     display: flex;
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 500;
+    margin: 2rem auto;
+    color: var(--color-Tint);
+    font-size: clamp(1.5rem, 4vw, 4rem);
+}
+
+.hero-text p:hover
+{
+    scale: 1.05;
     color: var(--color-text);
-    pointer-events: none;
-    line-height: normal;
-    align-items: center;
+    width: 75%;
+    transition: all .5s;
 }
 
-.about svg
+.hero-text p:not(:hover)
 {
-    margin-bottom: 10px;
+    width: 75%;
+    transition: .8s;
 }

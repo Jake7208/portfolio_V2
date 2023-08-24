@@ -24,6 +24,8 @@ const getTrailerClass = type => {
   switch(type) {
     case "video":
       return "fa-solid fa-play"
+    case "view":
+      return "fa-solid fa-eye"
     default:
       return "fa-solid fa-arrow-right"; 
   }
@@ -51,4 +53,5 @@ const toggleNav = () => {
 
 const navToggleBtn = document.getElementById('nav-toggle');
 navToggleBtn.addEventListener('click', toggleNav);
+
 

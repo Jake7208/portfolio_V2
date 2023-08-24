@@ -1,0 +1,112 @@
+#about 
+{
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    width: 75%;
+    max-width: 1920px;
+    margin: clamp(4rem, 10vw, 10rem) auto;
+    /* padding-bottom: clamp(30px,6vw,100px); */
+}
+
+.about h2
+{
+    position: relative;
+    display: flex;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 500;
+    color: var(--color-text);
+    pointer-events: none;
+    line-height: normal;
+    align-items: center;
+    padding-bottom:clamp(1rem, 3vw, 2rem);
+}
+
+.side-text
+{
+    position: absolute;
+    top: 30%;
+    right: 0;
+    transform: translateY(-50%);
+    font-family: var(--font-family2);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    writing-mode: sideways-lr;
+}
+
+ .reveal-type 
+{
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    width: 70%;
+    line-height: 200%;
+    color: var(--btn-border);
+    padding:  clamp(1rem, 3vw, 2rem) 0 ;
+}
+
+.read-more
+{
+    position: relative;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-text);
+    font-family: var(--font-family2);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: var(--color-text);   
+    background: none;
+    padding: 2px clamp(1rem, 3vw, 2rem);;
+    margin-top: clamp(1.5rem, 3vw, 1rem);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .3s;
+    z-index: 2;
+}
+
+.read-more:hover{
+    color: var(--color-bg);
+}
+
+.read-more::after
+{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--color-text);
+    transition: all .3s;
+    z-index: -1;
+}
+
+.read-more:hover::after
+{
+    height: 100%;
+}
+
+.read-more:not(:hover)::after
+{
+    position: absolute;
+    content: '';
+    bottom: 100%;
+}
+
+
+.basic-text
+{
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    width: 70%;
+    line-height: 200%;
+    color: var(--color-text);
+    padding:  clamp(1rem, 3vw, 2rem) 0 ;
+    margin: clamp(1rem, 3vw, 3rem) 0;
+}
+
+video
+{
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.656);
+}
