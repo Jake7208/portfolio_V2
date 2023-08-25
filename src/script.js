@@ -57,7 +57,7 @@ galleryContainer.forEach((item, i) => {
   gsap.from(item, {
     scrollTrigger: {
       trigger: item,
-      start: 'top 90%',
+      start: 'top 80%',
       end: 'top 50%',
     },
     x: '100',
@@ -80,6 +80,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     lenis.scrollTo(this.getAttribute('href'))
   });
 })
+
+const galleryGroup = document.querySelectorAll('.gallery-group');
+const galleryMover = document.querySelector('.gallery-mover');
+
+const mover = document.querySelector('.mover');
+
+const moving = (e) => {
+  const x = e.clientX;
+  console.log(moving.x);
+}
 
 
 
