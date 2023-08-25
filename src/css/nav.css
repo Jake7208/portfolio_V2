@@ -223,10 +223,18 @@ main
         width: 100% !important;
     }
 
-    video
+    .video-container
     {
-        width: 100% !important;
-        height: auto;
+        position: relative;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr !important;
+    }
+    .about-btns
+    {
+        display: flex;
+        padding-top: clamp(1rem, 3vw, 2rem);
+        flex-direction: row !important;
     }
 
 }

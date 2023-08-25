@@ -1,21 +1,29 @@
 import * as THREE from 'three';
 
+const renderer = new THREE.WebGLRenderer();
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+
+
 gsap.registerPlugin(Flip, ScrollTrigger);
 
-const heading2 = document.querySelector('h2');
-
+const heading2 = document.querySelectorAll('h2');
 const splitTypes = document.querySelectorAll('.reveal-type');
+const projectText = document.querySelectorAll('.project-text');
+const galleryContainer = document.querySelectorAll('.gallery-container');
 
-gsap.from(heading2, {
-  scrollTrigger: {
-    trigger: heading2,
-    start: 'top 90%',
-    end: 'top 20%',
-    scrub: true,
-  },
+heading2.forEach((heading, i) => {
+  gsap.from(heading, {
+    scrollTrigger: {
+      trigger: heading, // Use the current heading as the trigger
+      start: 'top 90%',
+      end: 'top 20%',
+      scrub: true,
+    },
+    x: -50,
+  });
+});
 
-  x : -50
-})
 
 splitTypes.forEach((char, i) => {
   const text = new SplitType(char, {type: 'chars'});
@@ -31,6 +39,33 @@ splitTypes.forEach((char, i) => {
     stagger: .8
   })
 })
+
+projectText.forEach((text, i) => {
+  gsap.from(text, {
+    scrollTrigger: {
+      trigger: text,
+      start: 'top 85%',
+      end: 'top 20%',
+      scrub: true,
+    },
+    opacity: 0,
+    stagger: .8
+  })
+})
+
+galleryContainer.forEach((item, i) => {
+  gsap.from(item, {
+    scrollTrigger: {
+      trigger: item,
+      start: 'top 90%',
+      end: 'top 50%',
+    },
+    x: '100',
+    duration: 1.5
+  })
+})
+
+
 const lenis = new Lenis()
 function raf(time) {
   lenis.raf(time);

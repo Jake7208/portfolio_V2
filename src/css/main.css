@@ -5,7 +5,7 @@
     --color-bg: #E9E9E9;
     --color-text: #222222;
     --btn-border: #cccccc;
-    --color-primary: #769BE3;
+    --color-primary: #6B576A;
     --color-Tint: #636363;
     --color-invisible: #00102f;
     --text-header: clamp(1rem, 3vw, 1.2rem);
@@ -53,10 +53,6 @@ html.lenis {
   
   .lenis.lenis-smooth [data-lenis-prevent] {
     overscroll-behavior: contain;
-  }
-  
-  .lenis.lenis-stopped {
-    overflow: hidden;
   }
   
   .lenis.lenis-scrolling iframe {
@@ -162,7 +158,7 @@ TODO nav
     display: flex;
     justify-content: center;
     max-height: 100vh;
-    height: 1080px;
+    height: 1300px
 }
 #hero-content
 {

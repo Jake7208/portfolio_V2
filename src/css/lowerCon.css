@@ -1,8 +1,12 @@
+.sub-head
+{
+    color: var(--color-primary);
+}
+
 #about 
 {
     position: relative;
     height: auto;
-    min-height: 100vh;
     width: 85%;
     max-width: 1920px;
     margin: clamp(4rem, 10vw, 10rem) auto;
@@ -30,7 +34,7 @@
     transform: translateY(-50%);
     font-family: var(--font-family2);
     font-size: clamp(1rem, 3vw, 1.2rem);
-    writing-mode: sideways-lr;
+    writing-mode: vertical-rl;
 }
 
 .about p
@@ -118,8 +122,9 @@
 video
 {
     width: 100%;
+    height: 100%;
+    max-height: 800px;
     grid-column: span 3;
-    height: auto;
     object-fit: cover;
     border-radius: 5px;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.656);
@@ -206,8 +211,8 @@ video
 
 .circle {
     position: relative;
-    width: clamp(100px, 20vw, 200px);
-    height: clamp(100px, 20vw, 200px);
+    width: clamp(100px, 20vw, 250px);
+    height: clamp(100px, 20vw, 250px);
     border-radius: 50%;
     overflow: hidden; /* Ensure the background doesn't overflow */
 }
@@ -233,8 +238,8 @@ video
 .arrow
 {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -256,26 +261,111 @@ video
 {
     position: relative;
     height: auto;
-    min-height: 100vh;
-    width: 85%;
-    max-width: 1920px;
+    width: 100%;
     margin: clamp(4rem, 10vw, 10rem) auto;
 }
 
-#buttons
+#projects h2
 {
+    max-width: 1920px;
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
     display: flex;
-    gap: clamp(1rem, 3vw, 2rem);
-    margin: clamp(1rem, 3vw, 2rem) 0;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 500;
+    color: var(--color-text);
+    pointer-events: none;
+    line-height: normal;
+    align-items: center;
+    margin-bottom: clamp(100px, 5vw, 200px);
+}
+
+.sub-head
+{
+    width: 85%;
+    max-width: 1920px;
+    margin: 0 auto;
 }
 
 .objects 
 {
     position: relative;
+    display: grid;
 }
 
-.Projects
-{}
+
+.projects
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.project-text{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-text);
+    padding: clamp(45px, 3vw, 80px) 0;
+    text-decoration: none;
+}
+
+.projects:first-child .project-text {
+    border-top: 2px solid var(--color-text);
+}
+
+.project-text p{
+    
+    font-size: clamp(.8rem, 3vw, 3rem);
+}
+
+.project-text span{
+    font-size: clamp(.6rem, 3vw, .8rem);
+    position: absolute;
+    top: 0;
+    left: -20px;
+}
+
+.gallery{
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+.gallery-header
+{
+    position: relative;
+    margin-top: clamp(200px, 5vw, 300px);
+}
+.gallery-header h2
+{
+    position: relative;
+    font-size: clamp(2rem, 5vw, 3rem) !important;
+}
+
+.gallery-container {
+    position: absolute;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.gallery-item img {
+    position: relative;
+    width: 500px;
+    height: 300px;
+}
 
 
 @keyframes rotate
