@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/marquee.css">
     <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/lowerCon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Jacob Price, Portfolio</title>
     
@@ -83,37 +83,114 @@
             
         </div>
         <div class="main-wrapper">
-            <section id="about">
+            <section id="about" >
                 <div class="block">
                     <div class="about">
                         <span>- About 01</span>
-                        <h2>More About Jacob</h2>
+                        <h2>More About Me</h2>
                         <span class="side-text">Love for development</span>
-                        <p class="reveal-type">Transforming ideas into digital realities with frontend expertise. Crafting elegant front-end solutions that seamlessly bridge the gap between design and functionality.</p>
+                        <p class="reveal-type">Transforming ideas into digital realities with frontend expertise. Crafting elegant front-end solutions that 
+                            seamlessly bridge the gap between design and functionality.</p>
                         <a class="read-more interactable" data-type="view" href="#projects">Read More</a>
                         <p class="basic-text">Get to know me better through this captivating video, exploring my journey and passion for crafting immersive web experiences.</p>
                         <div class="video-container">
-                            <video  class="interactable" data-type="video" controls >
+                            <video  poster="img/person.png" class="interactable" data-type="video" controls >
                                 <source src="./img/ad.mp4" type="video/mp4">
                             </video>
                             <div class="about-btns" >
-                                <button >
-                                    CONTACT
-                                </button>
+                                <div class="upper-container ">
+                                    <a class="text">CONTACT <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                                <div class="circle">
+                                    <a href="#projects"><span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <div class="block">
+                    <h2>What I've been Crafting</h2>
+                    <div id="buttons" class="sort">
+                        <button class="btn">Show All</button>
+                        <button class="btn">Development</button>
+                        <button class="btn">Design</button>
+                        <button class="btn">3D Development</button>
+                    </div>
+
+                    <div class="objects">
+                        <div class="projects">
+                            <span>01</span>
+                            <p>Martin RepairsIT</p>
+                            <p>One Stop Shop for all your IT needs</p>
+                            <p>08/2023</p>
+                            <a class="study-link" href="">See Study</a>
+                        </div>   
+                        <div class="projects">
+                            <span>02</span>
+                            <p>Resume.Land</p>
+                            <p>Build something that matters</p>
+                            <p>06/2023</p>
+                            <a class="study-link" href="">See Study</a>
+                        </div>
+                        <div class="projects">
+                            <span>03</span>
+                            <p>TheGallery.Land</p>
+                            <p>A world of art</p>
+                            <p>07/2023</p>
+                            <a class="study-link" href="">See Study</a>
+                        </div>
+                        <div class="projects">
+                            <span>04</span>
+                            <p>Grad App</p>
+                            <p>Bridgerland Graduation Application</p>
+                            <p>07/2023</p>
+                            <a class="study-link" href="">See Study</a>
+                        </div>
+                        <div class="projects">
+                            <span>05</span>
+                            <p>Inspired Websites</p>
+                            <p>Get your website up and running</p>
+                            <p>08/2023</p>
+                            <a class="study-link" href="">See Study</a>
+                        </div>
+                    </div>
+                    <div class="gallery">
+                        <div class="gallery-header">
+                            <h2>Jacobs Projects</h2>
+                        </div>
+                        <div class="gallery-container">
+                            <div class="gallery-item">
+                                <img src="./img/house.png" alt="Ex1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="./img/person.png" alt="Ex1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="./img/phone.png" alt="Ex1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="./img/project.png" alt="Ex1">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
+
+
     </main>
+
+
     <div id="nav2">
         <div id="nav-links">
-            <a class="nav-link" href="#hero">
+            <a class="nav-link" href="#hero" onclick="lenis.scrollTo('#hero')">
                 <h2 class="nav-link-label">Home</h2>
                 <img  class="nav-link-image interactable" data-type="link" src="./img/house.png" alt="">
             </a>
-            <a class="nav-link" href="#about">
+            <a class="nav-link" href="#about" onclick="lenis.scrollTo('#about')">
                 <h2 class="nav-link-label">About</h2>
                 <img  class="nav-link-image interactable"  data-type="link" src="./img/person.png" alt="">
             </a>
@@ -136,5 +213,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
 </body>
 </html>

@@ -21,6 +21,7 @@ nav
     display: flex;
     align-items: center;
     gap: clamp(1rem, 3vw, 2rem);
+    mix-blend-mode: difference;
 }
 
 nav a,
@@ -68,7 +69,6 @@ main
     margin: 0px;
     position: relative;
     z-index: 3;
-    scroll-behavior: smooth;
 }
 
 #nav2
@@ -188,10 +188,7 @@ main
 
 @media screen and (max-width: 1330px)
 {
-    main
-    {
-        overflow-X: hidden;
-    }
+    
     #hero-content
     {
         display: flex;
@@ -239,10 +236,6 @@ main
     body
     {
         cursor: default;
-    }
-    .nav-section
-    {
-        display: none;
     }
 
     .hero-text p

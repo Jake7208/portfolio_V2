@@ -7,7 +7,7 @@
     --btn-border: #cccccc;
     --color-primary: #769BE3;
     --color-Tint: #636363;
-    --color-invisible: #769ae39c;
+    --color-invisible: #00102f;
     --text-header: clamp(1rem, 3vw, 1.2rem);
     --font-family1: 'Poppins', sans-serif;
     --font-family2: 'Rosarivo', serif;
@@ -23,24 +23,45 @@
 {
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth;
     
 }
 
 ::-moz-selection { /* Code for Firefox */
     color: var(--color-bg);
     background: var(--color-invisible);
+    mix-blend-mode: difference;
   }
   
   ::selection {
     color: var(--color-bg);
     background: var(--color-invisible);
+    mix-blend-mode: difference;
   }
 
 * , ::before, ::after
 {
     box-sizing: inherit;
 }
+
+html.lenis {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
 
 .block
 {
@@ -91,6 +112,7 @@ strong
 #trailer[data-type="video"]
 {
     background: var(--color-invisible);
+    mix-blend-mode: difference;
 }
 
 body:hover > #trailer
@@ -107,9 +129,11 @@ body:hover > #trailer
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-60%, -60%) scale(1);
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 6px;
-    line-height: 4px;
     opacity: 0;
     transition: opacity 400ms ease;
     color: #D9D9D9;
@@ -118,7 +142,7 @@ body:hover > #trailer
 #trailer[data-type="link"] > #trailer-icon
 {
     opacity: 1;
-    transform: translate(-60%, -60%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 #trailer[data-type="video"] > #trailer-icon,
@@ -151,7 +175,7 @@ TODO nav
 {
     position: relative;
     display: flex;
-    font-size: clamp(6rem, 13vw, 14rem);
+    font-size: clamp(6rem, 13vw, 18rem);
     justify-content: center;
     font-weight: 500;
     color: var(--color-text);
@@ -165,20 +189,8 @@ TODO nav
     position: relative;
     display: flex;
     margin: 2rem auto;
-    color: var(--color-Tint);
-    font-size: clamp(1.5rem, 4vw, 4rem);
-}
-
-.hero-text p:hover
-{
+    font-size: clamp(1.5rem, 4vw, 4rem);  
+    width: 85%;
     scale: 1.05;
     color: var(--color-text);
-    width: 75%;
-    transition: all .5s;
-}
-
-.hero-text p:not(:hover)
-{
-    width: 75%;
-    transition: .8s;
 }
