@@ -42,6 +42,10 @@
 {
     box-sizing: inherit;
 }
+html
+{
+    height: auto;
+}
 
 html.lenis {
     height: auto;

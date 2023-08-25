@@ -188,7 +188,10 @@ main
 
 @media screen and (max-width: 1330px)
 {
-    
+    #trailer
+    {
+        display: none;
+    }
     #hero-content
     {
         display: flex;

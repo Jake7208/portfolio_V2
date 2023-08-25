@@ -1,16 +1,33 @@
 import * as THREE from 'three';
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-
 
 gsap.registerPlugin(Flip, ScrollTrigger);
 
 const heading2 = document.querySelectorAll('h2');
 const splitTypes = document.querySelectorAll('.reveal-type');
 const projectText = document.querySelectorAll('.project-text');
-const galleryContainer = document.querySelectorAll('.gallery-container');
+const gallery = document.querySelector('.gallery');
+
+gsap.from(gallery, {
+  scrollTrigger: {
+    trigger: gallery,
+    start: 'top 90%',
+    end: 'top top',
+    scrub: true,
+  },
+  opacity: 0
+})
+gsap.to (gallery, {
+  scrollTrigger: {
+    trigger: gallery,
+    start: 'top 90%',
+    end: 'top top',
+    scrub: true,
+  },
+  y: 50,
+  background: 'black',
+  duration: 1
+})
 
 heading2.forEach((heading, i) => {
   gsap.from(heading, {
@@ -23,6 +40,18 @@ heading2.forEach((heading, i) => {
     x: -50,
   });
 });
+projectText.forEach((text, i) => {
+  gsap.from(text, {
+    scrollTrigger: {
+      trigger: text,
+      start: 'top 85%',
+      end: 'top 20%',
+      scrub: true,
+    },
+    opacity: 0,
+    stagger: .8
+  })
+})
 
 
 splitTypes.forEach((char, i) => {
@@ -40,30 +69,81 @@ splitTypes.forEach((char, i) => {
   })
 })
 
-projectText.forEach((text, i) => {
-  gsap.from(text, {
-    scrollTrigger: {
-      trigger: text,
-      start: 'top 85%',
-      end: 'top 20%',
-      scrub: true,
-    },
-    opacity: 0,
-    stagger: .8
-  })
-})
+const isMobile = window.innerWidth < 800; // Adjust the breakpoint as needed
 
-galleryContainer.forEach((item, i) => {
-  gsap.from(item, {
-    scrollTrigger: {
-      trigger: item,
-      start: 'top 80%',
-      end: 'top 50%',
-    },
-    x: '100',
-    duration: 1.5
-  })
-})
+// Get all the images
+const images = document.querySelectorAll('.image');
+
+// Loop through each image and set the draggable attribute
+images.forEach(img => {
+  if (isMobile) {
+    img.draggable = true;
+  }
+});
+
+
+const galleryMover = document.querySelector('.gallery-container');
+
+
+let isDragging = false;
+let initialX = 0;
+
+galleryMover.addEventListener('mousedown', e => startDragging(e.clientX));
+galleryMover.addEventListener('touchstart', e => startDragging(e.touches[0].clientX));
+
+window.addEventListener('mousemove', e => moveGallery(e.clientX));
+window.addEventListener('touchmove', e => moveGallery(e.touches[0].clientX));
+
+window.addEventListener('mouseup', stopDragging);
+window.addEventListener('touchend', stopDragging);
+
+function startDragging(clientX) {
+  isDragging = true;
+  initialX = clientX;
+}
+
+function moveGallery(clientX) {
+  if (!isDragging) return;
+
+  const mouseDelta = clientX - initialX;
+  const maxDelta = window.innerWidth / 2;
+  const percentage = (mouseDelta / maxDelta) * 100;
+  let nextPercentage = parseFloat(galleryMover.dataset.prevPercentage) + percentage;
+
+  // Limit the nextPercentage value to a certain range
+  const minPercentage = -80; // Limit on the left side
+  const maxPercentage = 2;  // Limit on the right side
+  nextPercentage = Math.max(minPercentage, Math.min(maxPercentage, nextPercentage));
+
+  galleryMover.dataset.percentage = nextPercentage;
+
+  // Adjust the animation durations and easing functions for a more intense effect
+  const animationOptions = {
+    duration: 500,       // Increase the duration for a more prolonged effect
+    fill: "forwards",
+    easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" // Use a different easing function for a more dramatic effect
+  };
+
+  galleryMover.animate(
+    { transform: `translateX(${nextPercentage}%)` },
+    animationOptions
+  );
+
+  const images = galleryMover.querySelectorAll('.gallery-item img');
+  images.forEach(img => {
+    img.animate(
+      { objectPosition: `${100 + nextPercentage}% -200%` }, // Adjust the value to move more intensely
+      animationOptions
+    );
+  });
+  
+}
+
+
+function stopDragging() {
+  isDragging = false;
+  galleryMover.dataset.prevPercentage = galleryMover.dataset.percentage;
+}
 
 
 const lenis = new Lenis()
@@ -80,16 +160,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     lenis.scrollTo(this.getAttribute('href'))
   });
 })
-
-const galleryGroup = document.querySelectorAll('.gallery-group');
-const galleryMover = document.querySelector('.gallery-mover');
-
-const mover = document.querySelector('.mover');
-
-const moving = (e) => {
-  const x = e.clientX;
-  console.log(moving.x);
-}
 
 
 
@@ -115,10 +185,11 @@ const getTrailerClass = type => {
       return "fa-solid fa-play"
     case "view":
       return "fa-solid fa-eye"
-    default:
-      return "fa-solid fa-arrow-right"; 
-  }
-}
+      default:
+        return "fa-solid fa-arrow-right"; 
+      }
+    }
+    console.log(getTrailerClass());
 
 window.onmousemove = e => {
   const interactable = e.target.closest(".interactable"),
