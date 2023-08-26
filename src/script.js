@@ -72,82 +72,6 @@ splitTypes.forEach((char, i) => {
 })
 
 
-const isMobile = window.innerWidth < 800; // Adjust the breakpoint as needed
-
-// Get all the images
-const images = document.querySelectorAll('.image');
-
-// Loop through each image and set the draggable attribute
-images.forEach(img => {
-  if (isMobile) {
-    img.draggable = true;
-  }
-});
-
-
-const galleryMover = document.querySelector('.gallery-container');
-
-
-let isDragging = false;
-let initialX = 0;
-
-galleryMover.addEventListener('mousedown', e => startDragging(e.clientX));
-galleryMover.addEventListener('touchstart', e => startDragging(e.touches[0].clientX));
-
-window.addEventListener('mousemove', e => moveGallery(e.clientX));
-window.addEventListener('touchmove', e => moveGallery(e.touches[0].clientX));
-
-window.addEventListener('mouseup', stopDragging);
-window.addEventListener('touchend', stopDragging);
-
-function startDragging(clientX) {
-  isDragging = true;
-  initialX = clientX;
-}
-
-function moveGallery(clientX) {
-  if (!isDragging) return;
-
-  const mouseDelta = clientX - initialX;
-  const maxDelta = window.innerWidth / 2;
-  const percentage = (mouseDelta / maxDelta) * 100;
-  let nextPercentage = parseFloat(galleryMover.dataset.prevPercentage) + percentage;
-
-  // Limit the nextPercentage value to a certain range
-  const minPercentage = -80; // Limit on the left side
-  const maxPercentage = 2;  // Limit on the right side
-  nextPercentage = Math.max(minPercentage, Math.min(maxPercentage, nextPercentage));
-
-  galleryMover.dataset.percentage = nextPercentage;
-
-  // Adjust the animation durations and easing functions for a more intense effect
-  const animationOptions = {
-    duration: 500,       // Increase the duration for a more prolonged effect
-    fill: "forwards",
-    easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" // Use a different easing function for a more dramatic effect
-  };
-
-  galleryMover.animate(
-    { transform: `translateX(${nextPercentage}%)` },
-    animationOptions
-  );
-
-  const images = galleryMover.querySelectorAll('.gallery-item img');
-  images.forEach(img => {
-    img.animate(
-      { objectPosition: `${100 + nextPercentage}% -200%` }, // Adjust the value to move more intensely
-      animationOptions
-    );
-  });
-}
-
-
-function stopDragging() {
-  isDragging = false;
-  galleryMover.dataset.prevPercentage = galleryMover.dataset.percentage;
-}
-
-
 const lenis = new Lenis()
 function raf(time) {
   lenis.raf(time);
@@ -224,34 +148,89 @@ const navLink = document.querySelectorAll('.nav-link');
 navToggleBtn.addEventListener('click', toggleNav);
 navLink.forEach(link => link.addEventListener('click', toggleNav));
 
+const isMobile = window.innerWidth < 800; // Adjust the breakpoint as needed
+
+// Get all the images
+const images = document.querySelectorAll('.image');
+
+// Loop through each image and set the draggable attribute
+images.forEach(img => {
+  if (isMobile) {
+    img.draggable = true;
+  }
+});
 
 
-// const magnetic = document.querySelectorAll(".magnetic");
-// const eyes = document.querySelectorAll(".eyes");
-// const anchor = document.getElementById("anchor");
-// const position = anchor.getBoundingClientRect();
-// const anchorX = position.left + position.width / 2;
-// const anchorY = position.top + position.height / 2;
+const galleryMover = document.querySelector('.gallery-container');
 
 
-// magnetic.forEach((item) => {
-//   item.addEventListener("mousemove", (e) => {
-//     const x = e.clientX;
-//     const y = e.clientY;
+let isDragging = false;
+let initialX = 0;
 
-//     const angleDeg = angle(x, y, anchorX, anchorY);
-    
-//     eyes.forEach((item) => {
-//       item.style.transform = `rotate(${90 + angleDeg}deg)`;
-//     });
-//   });
-// });
+galleryMover.addEventListener('mousedown', e => startDragging(e.clientX));
+galleryMover.addEventListener('touchstart', e => startDragging(e.touches[0].clientX));
 
-// function angle(cx, cy, ex, ey) {
-//   const dy = ey - cy;
-//   const dx = ex - cx;
-//   const rad = Math.atan2(dy, dx);
-//   const deg = rad * (180 / Math.PI);
-//   return deg;
-// }
+window.addEventListener('mousemove', e => moveGallery(e.clientX));
+window.addEventListener('touchmove', e => moveGallery(e.touches[0].clientX));
 
+window.addEventListener('mouseup', stopDragging);
+window.addEventListener('touchend', stopDragging);
+
+function startDragging(clientX) {
+  isDragging = true;
+  initialX = clientX;
+}
+
+function moveGallery(clientX) {
+  if (!isDragging) return;
+
+  const mouseDelta = clientX - initialX;
+  const maxDelta = window.innerWidth / 2;
+  const percentage = (mouseDelta / maxDelta) * 100;
+  let nextPercentage = parseFloat(galleryMover.dataset.prevPercentage) + percentage;
+
+  // Limit the nextPercentage value to a certain range
+  const minPercentage = -80; // Limit on the left side
+  const maxPercentage = 2;  // Limit on the right side
+  nextPercentage = Math.max(minPercentage, Math.min(maxPercentage, nextPercentage));
+
+  galleryMover.dataset.percentage = nextPercentage;
+
+  // Adjust the animation durations and easing functions for a more intense effect
+  const animationOptions = {
+    duration: 500,       // Increase the duration for a more prolonged effect
+    fill: "forwards",
+    easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" // Use a different easing function for a more dramatic effect
+  };
+
+  galleryMover.animate(
+    { transform: `translateX(${nextPercentage}%)` },
+    animationOptions
+  );
+
+  const images = galleryMover.querySelectorAll('.gallery-item img');
+  images.forEach(img => {
+    img.animate(
+      { objectPosition: `${100 + nextPercentage}% -200%` }, // Adjust the value to move more intensely
+      animationOptions
+    );
+  });
+}
+
+
+function stopDragging() {
+  isDragging = false;
+  galleryMover.dataset.prevPercentage = galleryMover.dataset.percentage;
+}
+
+  const inputs = document.querySelectorAll('.entry-area input');
+
+  inputs.forEach(input => {
+      input.addEventListener('input', function() {
+          if (this.value.trim() !== '') {
+              this.classList.add('has-text');
+          } else {
+              this.classList.remove('has-text');
+          }
+      });
+  });

@@ -554,20 +554,23 @@ input{
     z-index: 1;
 }
 
-input:focus,
-input:valid,
-textarea:focus,
-textarea:valid
-{
+/* .entry-area input:focus,
+.entry-area input:valid,
+.entry-area input:not(:placeholder-shown) {
     color: var(--color-text);
     transition: all .3s;
+} */
+
+.entry-area input.has-text + .label-line {
+    color: var(--color-text);
+    transition: all .3s;
+    height: 30px;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    transform: translate(-15px, -30px);
 }
 
-input:focus + .label-line,
-input:valid + .label-line,
-textarea:focus + .label-line2,
-textarea:valid + .label-line2
-{
+.entry-area textarea:focus + .label-line2,
+.entry-area textarea:valid + .label-line2 {
     color: var(--color-text);
     transition: all .3s;
     height: 30px;

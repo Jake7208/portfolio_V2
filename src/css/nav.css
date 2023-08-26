@@ -198,7 +198,7 @@ main
 }
 #nav-toggle:hover span
 {
-    transform: translate(-50%, -50%) rotate(180deg);
+    transform: translate(-50%, -50%) rotate(90deg);
 }
 
 
