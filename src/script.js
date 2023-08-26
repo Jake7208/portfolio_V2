@@ -54,6 +54,8 @@ projectText.forEach((text, i) => {
 })
 
 
+
+
 splitTypes.forEach((char, i) => {
   const text = new SplitType(char, {type: 'chars'});
   
@@ -68,6 +70,7 @@ splitTypes.forEach((char, i) => {
     stagger: .8
   })
 })
+
 
 const isMobile = window.innerWidth < 800; // Adjust the breakpoint as needed
 
@@ -136,7 +139,6 @@ function moveGallery(clientX) {
       animationOptions
     );
   });
-  
 }
 
 
@@ -185,8 +187,10 @@ const getTrailerClass = type => {
       return "fa-solid fa-play"
     case "view":
       return "fa-solid fa-eye"
+    case "drag":
+      return " fa-solid fa-arrows"
       default:
-        return "fa-solid fa-arrow-right"; 
+        return "fa-solid fa-arrow-right"
       }
     }
     console.log(getTrailerClass());

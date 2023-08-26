@@ -91,7 +91,7 @@
                         <span class="side-text">Love for development</span>
                         <p class="reveal-type">Transforming ideas into digital realities with frontend expertise. Crafting elegant front-end solutions that 
                             seamlessly bridge the gap between design and functionality.</p>
-                        <a class="read-more interactable" data-type="view" href="#projects">Read More</a>
+                        <a class="read-more "  href="#projects">Read More</a>
                         <p class="basic-text">Get to know me better through this captivating video, exploring my journey and passion for crafting immersive web experiences.</p>
                         <div class="video-container">
                             <video  poster="img/humanoid_1.png" class="interactable" data-type="video" controls >
@@ -116,32 +116,36 @@
                     <h2>What I've been Crafting</h2>
                     <div class="objects">
                         <div class="projects">
-                           
-                            <a class="project-text" href=""> 
+                            <a class="project-text interactable" data-type="view" href=""> 
+                                <img class="hidden-image" src="./img/humanoid_1.png" width="250px" alt="">
                                 <p><span>01</span>Martin RepairsIT</p>
                                 <p>One Stop Shop for all your IT needs</p>
                             </a>
                         </div>   
                         <div class="projects">
-                            <a class="project-text" href=""> 
+                            <a class="project-text interactable" data-type="view" href=""> 
+                            <img class="hidden-image" src="./img/humanoid_1.png" width="250px" alt="">
                             <p><span>02</span>Resume.Land</p>
                             <p>Build something that matters</p>
                             </a>
                         </div>
                         <div class="projects">
-                            <a class="project-text" href=""> 
+                            <a class="project-text interactable" data-type="view" href=""> 
+                                <img class="hidden-image" src="./img/humanoid_1.png" width="250px" alt="">
                                 <p><span>03</span>TheGallery.Land</p>
                                 <p>A world of art</p>
                             </a>
                         </div>
-                        <div class="projects">
-                            <a class="project-text" href=""> 
+                        <div class="projects" >
+                            <a class="project-text interactable" data-type="view" href="">
+                                <img class="hidden-image" src="./img/humanoid_1.png" width="250px" alt=""> 
                                 <p><span>04</span>Grad App</p>
                                 <p>Design Graduation Application</p>
                             </a>
                         </div>
                         <div class="projects">
-                            <a class="project-text" href=""> 
+                            <a class="project-text interactable" data-type="view" href=""> 
+                                <img class="hidden-image" src="./img/humanoid_1.png" width="250px" alt="">
                                 <p><span>05</span>Inspired Websites</p>
                                 <p>Get your website up and running</p>
                             </a>
@@ -151,7 +155,7 @@
                         <div class="gallery-header">
                             <h2>My Projects</h2>
                         </div>
-                        <div class="gallery-container" data-mouse-down-at="0" data-prev-percentage="0">
+                        <div class="gallery-container interactable" data-type="drag" data-mouse-down-at="0" data-prev-percentage="0">
                             <div class="gallery-group group-1">
                                 <div class="gallery-item">
                                     <img class="image" src="./img/or_bl-1.png" alt="Ex1" draggable="false">
@@ -200,9 +204,50 @@
             </section>
             <section id="stack">
                 <div class="block">
-                    <p class="sub-head">03 - Stack</p>
-                    <h2>My Favorite Tools</h2>
+                    <span class="sub-head">03 - Stack</span>
+                    <h2>My Favorite Tools</h2>  
+                    <div class="stack-container">
+                        <p class="odd">HTML</p>
+                        <p class="even">CSS</p>
+                        <p class="odd">JavaScript</p>
+                        <p class="even">Tailwind</p>
+                        <p class="odd">Three.js</p>
+                        <p class="even">Figma</p>
+                        <p class="odd">GSAP</p>
+                    </div>
                 </div>
+            </section>
+            <section id="contact">
+                    <span>04 - Contact</span>
+                    <h1>Get In Touch</h1>
+                    <div class="contact-form">
+                        <form >
+                            <span>01</span>
+                            <div class="entry-area">
+                                <input type="text" required>
+                                <div class="label-line">Name</div>
+                            </div>
+                            <span>03</span>
+                            <div class="entry-area">
+                                <input type="text" required>
+                                <div class="label-line">Company</div>
+                            </div>
+                             <span>02</span>
+                            <div class="entry-area">
+                                <input class="email" type="text" required>
+                                <div class="label-line">Email</div>
+                            </div>
+                            
+                            <span>04</span>
+                            <div class="entry-area">
+                                <textarea type="text" required></textarea>
+                                <div class="label-line2">Message</div>
+                            </div>
+                            <div class="submit-container"> 
+                                <button class="submit-btn" type="submit" value="Submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
             </section>
         </div>
 
