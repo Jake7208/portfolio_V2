@@ -149,19 +149,10 @@ navToggleBtn.addEventListener('click', toggleNav);
 navLink.forEach(link => link.addEventListener('click', toggleNav));
 
 document.addEventListener('DOMContentLoaded', () => {
-  const isMobile = window.innerWidth < 800; // Adjust the breakpoint as needed
-
-  // Get all the images
-  const images = document.querySelectorAll('.image');
-
-  // Loop through each image and set the draggable attribute
-  images.forEach(img => {
-    if (isMobile) {
-      img.draggable = true;
-    }
-  });
 
   const galleryMover = document.querySelector('.gallery-container');
+  galleryMover.dataset.prevPercentage = '0'; // Initialize prevPercentage
+  galleryMover.dataset.percentage = '0';     // Initialize data-percentage
 
   let isDragging = false;
   let initialX = 0;

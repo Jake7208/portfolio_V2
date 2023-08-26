@@ -386,7 +386,7 @@ video
 
 .gallery-container {
     white-space: nowrap;
-    height: 236px;
+    left: 2%;
     cursor: grab;
     box-sizing: border-box ;
     position: absolute;
