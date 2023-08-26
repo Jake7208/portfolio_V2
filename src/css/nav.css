@@ -73,10 +73,10 @@ main
 
 #nav2
 {
-    height: -120%;
+    height: 100%;
     width: 100%;
     position: fixed;
-    top: -100%;
+    top: -120%;
     z-index: 3;
     background: black;
     transition: all .5s;
