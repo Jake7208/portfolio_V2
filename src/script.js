@@ -25,7 +25,7 @@ gsap.to (gallery, {
     scrub: true,
   },
   y: 50,
-  background: 'black',
+  background: 'var(--color-bg)',
   duration: 1
 })
 
@@ -216,7 +216,9 @@ const toggleNav = () => {
 };
 
 const navToggleBtn = document.getElementById('nav-toggle');
+const navLink = document.querySelectorAll('.nav-link');
 navToggleBtn.addEventListener('click', toggleNav);
+navLink.forEach(link => link.addEventListener('click', toggleNav));
 
 
 
