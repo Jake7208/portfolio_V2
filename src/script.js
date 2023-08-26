@@ -212,7 +212,11 @@ window.onmousemove = e => {
 
 
 const toggleNav = () => {
-  document.body.dataset.navToggle = document.body.dataset.navToggle === 'true' ? 'false' : 'true';
+  const body = document.body; // Get a reference to the document's body element
+  body.dataset.navToggle = body.dataset.navToggle === 'true' ? 'false' : 'true';
+  
+  // Toggle overflow based on the navToggle dataset value
+  body.style.overflowY = body.dataset.navToggle === 'false' ? 'hidden' : `visible`; 
 };
 
 const navToggleBtn = document.getElementById('nav-toggle');
