@@ -25,7 +25,6 @@ gsap.to (gallery, {
     scrub: true,
   },
   y: 50,
-  background: 'var(--color-bg)',
   duration: 1
 })
 

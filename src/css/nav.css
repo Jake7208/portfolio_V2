@@ -236,6 +236,10 @@ body[data-nav-toggle="false"] #nav2
         justify-content: center;
         align-items: center;
     }
+    .hero-container
+    {
+        width: 85%;
+    }
 
     .side-text
     {
@@ -254,7 +258,7 @@ body[data-nav-toggle="false"] #nav2
         justify-content: center;
     }
 
-    .stack-container p:nth-child(4),
+.stack-container p:nth-child(4),
 .stack-container p:nth-child(6)
 {
     transform: translateX(0) !important;

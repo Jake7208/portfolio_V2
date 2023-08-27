@@ -182,6 +182,7 @@ TODO nav
     pointer-events: none;
     text-transform: uppercase;
     line-height: normal;
+    /* width: 85vmax; */
 }
 
 .hero-text p 
@@ -190,7 +191,19 @@ TODO nav
     display: flex;
     margin: 2rem auto;
     font-size: clamp(1.5rem, 4vw, 4rem);  
-    width: 85%;
-    scale: 1.05;
+    width: 100%;
+    scale: 1.00;
     color: var(--color-text);
+}
+
+.hero-container
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1920px;
+    width: 85vmax;
+    margin: 0 auto;
+    flex-direction: column;
 }
