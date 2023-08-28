@@ -109,7 +109,7 @@ const getTrailerClass = type => {
     case "video":
       return "fa-solid fa-play"
     case "view":
-      return "fa-solid fa-eye"
+      return "fa-solid fa-arrow-right"
     case "drag":
       return " fa-solid fa-arrows"
       default:

@@ -125,25 +125,19 @@ body:hover > #trailer
     opacity: 1;
 }
 
-#trailer-icon {
-    position: absolute;
+#trailer > #trailer-icon {
+     position: relative;
     top: 50%;
-    left: 50%;
-    transform: translate(-55%, -50%);
-    display: flex;
+    transform: translateY(-50%);
+    display: flex; 
     justify-content: center;
-    align-items: center;
+     align-items: center;
     font-size: 6px;
-    opacity: 0;
     transition: opacity 400ms ease;
     color: #D9D9D9;
+    opacity: 0;
 }
 
-#trailer[data-type="link"] > #trailer-icon
-{
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
 
 #trailer[data-type="video"] > #trailer-icon,
 #trailer[data-type="view"] > #trailer-icon
